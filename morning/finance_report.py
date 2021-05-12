@@ -11,7 +11,7 @@ bot = telegram.Bot(token=my_token)
 
 options = Options()
 options.add_argument('--start-fullscreen')
-driver = webdriver.Chrome(r'C:/Users/james/Desktop/morning_news/morning/chromedriver.exe', chrome_options=options)
+driver = webdriver.Chrome('chromedriver', chrome_options=options)
 
 def crawling_screenshot() :
     usd_materialsURL = 'https://finance.naver.com/marketindex/'

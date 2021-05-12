@@ -10,3 +10,6 @@ updates = bot.getUpdates()  #업데이트 내역을 받아옵니다.
 for u in updates :   # 내역중 메세지를 출력합니다.
 
     print(u.message)
+
+    
+    
