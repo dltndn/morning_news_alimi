@@ -4,16 +4,20 @@ import selenium
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
+# from pyvirtualdisplay import Display
 
 my_token = '1234'
 chat_id = 12344
 
 bot = telegram.Bot(token=my_token)
 options = Options()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--start-fullscreen')
-driver = webdriver.Chrome('/home/ubuntu/chromedriver', chrome_options=options)
 
 def morning_summary():
+    driver = webdriver.Chrome('/home/ubuntu/chromedriver', chrome_options=options)
     def crawling_screenshot() :
         usd_materialsURL = 'https://finance.naver.com/marketindex/'
 
@@ -75,18 +79,20 @@ def morning_summary():
     driver.close()
 
 def bitcoin_price_dollar() :
+    driver = webdriver.Chrome('/home/ubuntu/chromedriver', chrome_options=options)
     cmcURL = 'https://coinmarketcap.com/currencies/bitcoin/'
     driver.get(cmcURL)
     driver.implicitly_wait(time_to_wait=2)
     element = driver.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[2]/div/div[1]/div[2]/div[2]/div[1]/div').text
 
     text = '비트코인 달러가는 '
-    text2 = '입니다.'
+    text2 = ' 입니다.'
     result = text + element + text2
     driver.close()
     return result
 
 def bitcoin_dominance() :
+    driver = webdriver.Chrome('/home/ubuntu/chromedriver', chrome_options=options)
     URL = 'https://coinmarketcap.com/ko/'
     driver.get(URL)
     driver.implicitly_wait(time_to_wait=2)
@@ -97,6 +103,7 @@ def bitcoin_dominance() :
     return element
 
 def fear_greed_index() : 
+    driver = webdriver.Chrome('/home/ubuntu/chromedriver', chrome_options=options)
     URL = 'https://alternative.me/crypto/fear-and-greed-index/'
     driver.get(URL)
     driver.implicitly_wait(time_to_wait=2)
